@@ -10,20 +10,7 @@ angular
       "Can you describe a time when you overcame a challenge at work?",
       "What would you consider your biggest achievement?",
       "What is your greatest strength?",
-      "What do you enjoy most about working in this industry?",
-      "Why should we hire you for this role?",
-      "Tell me about a time when you worked on a team project. How did you contribute?",
-      "What skills do you feel you need to improve?",
-      "How do you handle stressful situations?",
-      "Describe a situation where you had to learn something new quickly. How did you manage it?",
-      "What is your preferred working style?",
-      "How do you stay organized and manage your time?",
-      "Have you ever had to deal with a difficult colleague or customer? How did you handle the situation?",
-      "What do you think are the most important qualities of a good leader?",
-      "How do you ensure you continue to grow and develop in your career?",
-      "Tell me about a time when you had to make a tough decision at work.",
-      "What are your salary expectations?",
-      "What would you do in the first 90 days if you were hired for this position?",
+      "What do you enjoy most about working in this industry?"
     ];
 
     $scope.currentQuestionIndex = 0;
@@ -37,6 +24,35 @@ angular
     let updateInterval;
 
     // Viseme mapping (same as before)
+    // const corresponding = {
+    //   A: "viseme_PP",
+    //   B: "viseme_kk",
+    //   C: "viseme_I",
+    //   D: "viseme_AA",
+    //   E: "viseme_O",
+    //   F: "viseme_U",
+    //   G: "viseme_FF",
+    //   H: "viseme_TH",
+    //   I: "viseme_ee", // Viseme for 'ee' (mouth wide)
+    //   J: "viseme_ch", // Viseme for 'ch' (tongue behind teeth)
+    //   K: "viseme_kk", // Viseme for 'k' (closed lips)
+    //   L: "viseme_L", // Viseme for 'l' (mouth slightly open)
+    //   M: "viseme_M", // Viseme for 'm' (mouth closed)
+    //   N: "viseme_N", // Viseme for 'n' (mouth open, tongue up)
+    //   O: "viseme_O", // Viseme for 'oh' (rounded lips)
+    //   P: "viseme_PP", // Viseme for 'p' (lips pressed together)
+    //   Q: "viseme_Q", // Viseme for 'qu' (mouth slightly open, tongue down)
+    //   R: "viseme_R", // Viseme for 'r' (tongue curled)
+    //   S: "viseme_S", // Viseme for 's' (teeth together)
+    //   T: "viseme_T", // Viseme for 't' (tongue behind teeth)
+    //   U: "viseme_U", // Viseme for 'oo' (rounded lips)
+    //   V: "viseme_V", // Viseme for 'v' (teeth on lower lip)
+    //   W: "viseme_W", // Viseme for 'w' (rounded lips)
+    //   X: "viseme_X", // Viseme for 'x' (mouth closed, lips slightly apart)
+    //   Y: "viseme_Y", // Viseme for 'y' (lips slightly spread)
+    //   Z: "viseme_Z", // Viseme for 'z' (teeth together, lips spread)
+    // };
+
     const corresponding = {
       A: "viseme_PP",
       B: "viseme_kk",
@@ -46,24 +62,7 @@ angular
       F: "viseme_U",
       G: "viseme_FF",
       H: "viseme_TH",
-      I: "viseme_ee", // Viseme for 'ee' (mouth wide)
-      J: "viseme_ch", // Viseme for 'ch' (tongue behind teeth)
-      K: "viseme_kk", // Viseme for 'k' (closed lips)
-      L: "viseme_L", // Viseme for 'l' (mouth slightly open)
-      M: "viseme_M", // Viseme for 'm' (mouth closed)
-      N: "viseme_N", // Viseme for 'n' (mouth open, tongue up)
-      O: "viseme_O", // Viseme for 'oh' (rounded lips)
-      P: "viseme_PP", // Viseme for 'p' (lips pressed together)
-      Q: "viseme_Q", // Viseme for 'qu' (mouth slightly open, tongue down)
-      R: "viseme_R", // Viseme for 'r' (tongue curled)
-      S: "viseme_S", // Viseme for 's' (teeth together)
-      T: "viseme_T", // Viseme for 't' (tongue behind teeth)
-      U: "viseme_U", // Viseme for 'oo' (rounded lips)
-      V: "viseme_V", // Viseme for 'v' (teeth on lower lip)
-      W: "viseme_W", // Viseme for 'w' (rounded lips)
-      X: "viseme_X", // Viseme for 'x' (mouth closed, lips slightly apart)
-      Y: "viseme_Y", // Viseme for 'y' (lips slightly spread)
-      Z: "viseme_Z", // Viseme for 'z' (teeth together, lips spread)
+      X: "viseme_PP",
     };
 
     // Lip-sync cue structure (we can define this based on known phonemes in your TTS voice)
@@ -183,7 +182,7 @@ angular
         return;
       }
 
-      const morphTargetSmoothing = 0.18;
+      const morphTargetSmoothing = 0.78;
 
       Object.values(corresponding).forEach((viseme) => {
         if (head.morphTargetDictionary[viseme] !== undefined) {
